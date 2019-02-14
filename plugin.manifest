@@ -1,0 +1,5 @@
+pluginname=FastPoll
+pluginclassname=FastPollPlugin
+origin=data-quest
+version=1.6
+studipMinVersion=4.0
