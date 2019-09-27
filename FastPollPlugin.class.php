@@ -10,9 +10,14 @@ class FastPollPlugin extends StudIPPlugin implements SystemPlugin {
     {
         parent::__construct();
         if ($this->isAdmin()) {
-            if (Navigation::hasItem("/messaging")) {
-                $tab = new AutoNavigation(_("Schnellumfragen"), PluginEngine::getURL($this, array(), "polls/index"));
-                Navigation::addItem("/messaging/fastpoll", $tab);
+            $tab = new AutoNavigation(_("Schnellumfragen"), PluginEngine::getURL($this, array(), "polls/index"));
+            Navigation::addItem("/messaging/fastpoll", $tab);
+
+            $tab = new Navigation(_("Schnellumfragen"), PluginEngine::getURL($this, array(), "polls/index"));
+            if (Navigation::hasItem("/start/serienbriefe", $tab)) {
+                Navigation::addItem("/start/serienbriefe/fastpoll", $tab);
+            } else {
+                Navigation::addItem("/start/fastpoll", $tab);
             }
         }
     }
