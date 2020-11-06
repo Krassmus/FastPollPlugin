@@ -82,12 +82,12 @@ class PollsController extends PluginController
             "Email"
         );
         foreach ($users as $user_id) {
-            $email = DBManager::get()->query("SELECT Email FROM auth_user_md5 WHERE user_id = ".DBManager::get()->quote($user_id))->fetch(PDO::FETCH_COLUMN, 0);
+            $user = User::find($user_id);
             $csv_arr[] = array(
-                get_username($user_id),
-                get_vorname($user_id),
-                get_nachname($user_id),
-                $email
+                $user['username'],
+                $user['vorname'],
+                $user['nachname'],
+                $user['email']
             );
         }
 
